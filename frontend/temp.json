@@ -1,0 +1,29 @@
+
+[
+    {
+        "name": "abby",
+        "expertise": "tidur",
+        "isAvailable": true,
+        "swipedTeam":[
+            "team1","team2","team3"
+        ]
+    },
+    {
+        "name": "ucok",
+        "expertise": "makan",
+        "isAvailable": true,
+        "swipedTeam":[
+            "team1","team2","team3"
+        ]
+    }
+
+]
+
+
+[
+    {
+        "teamName": "blackMamba",
+        "lookingFor": "UI/UX designer",
+        "SwipedRight": ["ucok","abby"]
+    }
+]
