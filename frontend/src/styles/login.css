@@ -1,0 +1,59 @@
+body{
+    min-height: 100%;
+    width: 100%;
+}
+.login-main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    font-size: 5rem;
+    margin-bottom: 0;
+}
+
+h2{
+    margin-top: 0;
+    font-weight: normal;
+}
+
+.credential-field-label{
+    margin: 10px;
+    font-weight: normal;
+}
+
+.credential-field{
+    width: 510px;
+    height: 40px;
+    border-radius: 2rem;
+    text-align: center;
+    font-size: 30px;
+    background-color: inherit;
+    border-color: white;
+    color: white;
+}
+
+.sign-btn{
+    width: 510px;
+    height: 40px;
+    border: none;
+    margin: 1rem;
+    border-radius: 2rem;
+    font-size: larger;
+}
+
+.sign-btn:hover{
+    cursor: pointer;
+}
+
+.link-label{
+    text-decoration: none;
+    color: #1EEBAD;
+}
+
+.link-label:hover{
+    text-decoration: underline;
+    cursor:pointer;
+}
