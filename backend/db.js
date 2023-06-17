@@ -24,36 +24,6 @@ function dbConn (){
       
 }
 
-
-
-const registerApplicantSchema = new mongoose.Schema({
-     projectTitle:{
-          type: String,
-          require: true
-     },
-     objective:{
-          type: String,
-          require: true
-     },
-     position:{
-          type: String,
-          require: true
-     },
-     skillReq:{
-          type: [String],
-          require: true
-     },
-     description:{
-          type: String,
-          require: true
-     },
-     email:{
-          type: String,
-          require: true
-     }
-})
-
-
 module.exports = dbConn;
 
 
