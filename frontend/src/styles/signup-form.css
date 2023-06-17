@@ -62,8 +62,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 200px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     border: 2px solid white;
     border-color: white ;
     border-radius: 30px;
@@ -81,7 +81,6 @@ body{
 }
 
 .picture-form-title{
-    text-align: center;
     margin: 10px;
 }
 
@@ -91,15 +90,69 @@ body{
     padding: 10px;
     margin: 10px;
     border-radius: 30px;
+    border: 2px solid white;
+    font-family: 'Poppins', sans-serif;
+
+
+}
+
+.gender-button-not-clicked{
     background-color: inherit;
     color: white;
-    border: 2px solid white;
-
 }
 
 .gender-button-clicked{
     background-color: white;
     color: black;
-    
 }
 
+.secondary-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.describe-form-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.describe-form-container label{
+    font-weight: bold;
+    font-size: 100;
+    margin:10px;
+}
+
+.describe-form{
+    background-color: inherit;
+    overflow: hidden;
+    width: 210px;
+    height: 200px;
+    border-radius: 30px;
+    border-color: white;
+    padding: 20px;
+    box-shadow: none;
+    color: white;
+    font-size: 20px;
+    border: 2px solid white;
+}
+
+.continue-button-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.continue-button-container  button{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    width: auto;
+    border-color: white;
+    padding: 10px;
+    padding-inline: 50px;
+    border-radius: 30px;
+    border: 2px solid white;
+    font-size: larger;
+
+    cursor: pointer;
+}
