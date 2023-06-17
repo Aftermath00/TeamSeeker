@@ -20,7 +20,7 @@ const Signup = () =>{
         <label className="credential-field-label"> Password </label>
         <input type="password" className="credential-field"/>
 
-        <button className="sign-btn" onClick={() => navigate('/signup-form')}>Sign Up</button>
+        <button className="sign-btn" onClick={() => navigate('/role')}>Sign Up</button>
         <p>Already have Account? <a onClick={() => navigate('/')} className="link-label">Sign In</a></p>   
         
         </div>
