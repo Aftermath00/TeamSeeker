@@ -12,7 +12,8 @@ const {
      detailApplication,
      delTeamAccount,
      delApplicantAccount,
-     editTeamDetail
+     editTeamDetail,
+     editApplicantDetail
 } = require('../controllers/profileController')
 
 router.get('/', (_req, res) => {
@@ -27,6 +28,7 @@ router.get('/detailteam/:teamname', detailTeam);
 router.get('/detailapplicant/:username', detailApplication);
 router.delete('/delteam/:id', delTeamAccount);
 router.delete('/delapplicant/:id', delApplicantAccount);
-// router.put('/editteamdetail/:id', editTeamDetail);
+router.put('/editteamdetail/:id', editTeamDetail);
+router.put('/editapplicantdetail/:id', editApplicantDetail);
 
 module.exports = router;

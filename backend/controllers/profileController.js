@@ -12,23 +12,19 @@ const detailTeam = async (req, res, next) => {
      } catch (err){
           return res.status(500).json({message: err.message + "~"})
      }
-
      return res.status(200).json({
           teamname
      })
 }
 
+// update team detail
 const editTeamDetail = async (req, res, next) => {
      try{
-          const {teamName, projectTitle, objective, position, skillReq, description} = req.body
-          const result = await teamCollection.updateOne({ _id: new ObjectId(req.params.id) }, { 
-               $set: teamName, $set: projectTitle, $set: objective, 
-               $set: position, $set: skillReq, $set: description,
-          });
-          if (result.modifiedCount === 0) {
-               return res.status(404).json({ message: 'Detail Not Found' });
-             }
-          return res.status(200).json({ message: 'Detail updated successfully' });
+          const data = await teamCollection.findByIdAndUpdate(new ObjectId(req.params.id), req.body) 
+          if (!data){
+               return res.status(404).json({message: 'Data Not Found'})
+          }
+          return res.status(200).json({ message: 'Detail Updated successfully' });
      } catch (err) {
           return res.status(500).json({ error: err.message });
      }
@@ -65,10 +61,18 @@ const detailApplication = async (req, res, next) => {
      })
 }
 
-
-// const editDetailApplicant = () => {
-
-// }
+// update applicant detail
+const editApplicantDetail = async (req, res, next) => {
+     try{
+          const data = await applicantCollection.findByIdAndUpdate(new ObjectId(req.params.id), req.body) 
+          if (!data){
+               return res.status(404).json({message: 'Data Not Found'})
+          }
+          return res.status(200).json({ message: 'Detail Updated successfully' });
+     } catch (err) {
+          return res.status(500).json({ error: err.message });
+     }
+}
 
 // delete applicant account
 const delApplicantAccount = async (req, res, next) => {
@@ -89,5 +93,6 @@ module.exports = {
      detailApplication,
      delTeamAccount,
      delApplicantAccount,
-     editTeamDetail
+     editTeamDetail, 
+     editApplicantDetail
 }
