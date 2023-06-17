@@ -1,6 +1,7 @@
 const userData = 
 [
-    {
+    {   
+        "key":crypto.randomUUID(),
         "name": "Grace",
         "profileImageUrl": "https://randomuser.me/api/portraits/lego/1.jpg",
         "institution": "School A",
@@ -10,6 +11,7 @@ const userData =
     },
 
     {
+        "key":crypto.randomUUID(),
         "name": "Areetha",
         "profileImageUrl": "https://randomuser.me/api/portraits/lego/2.jpg",
         "institution": "School B",
@@ -19,6 +21,7 @@ const userData =
     },
 
     {
+        "key":crypto.randomUUID(),
         "name": "Marchia",
         "profileImageUrl": "https://randomuser.me/api/portraits/lego/3.jpg",
         "institution": "School C",
@@ -28,6 +31,7 @@ const userData =
     },
 
     {
+        "key":crypto.randomUUID(),
         "name": "Bella",
         "profileImageUrl": "https://randomuser.me/api/portraits/lego/4.jpg",
         "institution": "School D",
@@ -37,6 +41,7 @@ const userData =
     },
 
     {
+        "key":crypto.randomUUID(),
         "name": "Michael",
         "profileImageUrl": "https://randomuser.me/api/portraits/lego/5.jpg",
         "institution": "School E",
@@ -46,6 +51,7 @@ const userData =
     },
 
     {
+        "key":crypto.randomUUID(),
         "name": "Olivia",
         "profileImageUrl": "https://randomuser.me/api/portraits/lego/6.jpg",
         "institution": "School F",
@@ -55,6 +61,7 @@ const userData =
     },
 
     {
+        "key":crypto.randomUUID(),
         "name": "David",
         "profileImageUrl": "https://randomuser.me/api/portraits/lego/7.jpg",
         "institution": "School G",
@@ -64,6 +71,7 @@ const userData =
     },
 
     {
+        "key":crypto.randomUUID(),
         "name": "Emma",
         "profileImageUrl": "https://randomuser.me/api/portraits/lego/8.jpg",
         "institution": "School H",
@@ -73,6 +81,7 @@ const userData =
     },
 
     {
+        "key":crypto.randomUUID(),
         "name": "Noah",
         "profileImageUrl": "https://randomuser.me/api/portraits/lego/9.jpg",
         "institution": "School I",
@@ -82,6 +91,7 @@ const userData =
     },
 
     {
+        "key":crypto.randomUUID(),
         "name": "Ava",
         "profileImageUrl": "https://randomuser.me/api/portraits/lego/3.jpg",
         "institution": "School J",

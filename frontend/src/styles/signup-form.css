@@ -1,0 +1,105 @@
+body{
+    background-color: #1E1E1E;
+
+}
+
+
+
+.signup-form-main-container{
+    margin: 20px;
+    margin-top: 0;
+
+}
+
+.small-logo{
+    width: 100px;
+    margin: 20px;
+}
+
+.signup-form-main-container h1{
+    text-align: center;
+    font-size: 50px;
+}
+
+.secondary-form-container{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+}
+
+.long-form-container{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.long-form-container label{
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+
+.long-form-container input{
+    background-color: inherit;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 400px;
+    height: 20px;
+    text-align: center;
+    border-radius: 30px;
+    border-color: white;
+    padding: 10px;
+    box-shadow: none;
+    color: white;
+    font-size: 20px;
+    border: 2px solid white;
+
+    
+}
+
+.picture-form{
+    background-color: #1A1A1A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 300px;
+    border: 2px solid white;
+    border-color: white ;
+    border-radius: 30px;
+}
+
+.picture-form button{
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.picture-form img{
+    width: 60px;
+    height: 60px;
+}
+
+.picture-form-title{
+    text-align: center;
+    margin: 10px;
+}
+
+.gender-picker-container button{
+    width: 100px;
+    border-color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 30px;
+    background-color: inherit;
+    color: white;
+    border: 2px solid white;
+
+}
+
+.gender-button-clicked{
+    background-color: white;
+    color: black;
+    
+}
+

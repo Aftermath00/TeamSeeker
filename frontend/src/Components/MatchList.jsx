@@ -4,16 +4,16 @@ const MatchList = ({matchList}) =>{
             <div className="match-list-container">
 
             {matchList.map(match =>{
+
                 return(
-                    
-                    <div className="match-list-holder">
+
+                    <div key = {match.id} className="match-list-holder">
 
                     <img className="match-list-image-holder" src={match.profileImageUrl}/>
                     <p>{match.name}</p>
 
                     </div>
-
-
+                    
                 )
             })}
 

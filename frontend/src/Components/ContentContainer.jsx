@@ -13,6 +13,7 @@ const ContentContainer = ({matchList,setMatchList}) =>{
         "location": ""
     }
 
+
     const [count,setCount] = useState(0)
 
 
@@ -24,6 +25,8 @@ const ContentContainer = ({matchList,setMatchList}) =>{
         if(count != userData.length-1){
 
             setCardData(userData[count+1]);
+
+            userData[count].id = crypto.randomUUID()
 
             setMatchList(currentList =>{
                 return [

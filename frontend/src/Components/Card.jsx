@@ -1,5 +1,9 @@
+import { useState } from "react"
+import CandidateDetailModal from "./CandidateDetailModal"
 
 const Card = ({cardData}) =>{
+
+    const [isOpen, setIsOpen] = useState(false)
 
     return(
         <>
@@ -27,7 +31,12 @@ const Card = ({cardData}) =>{
                 </div>
                 <p className="location-holder">{cardData.location}</p>
 
-                <a className="detail-link">Details</a>
+                <a onClick={() => setIsOpen(true)} className="detail-link">Details</a>
+
+                <CandidateDetailModal 
+                cardData = {cardData} 
+                open={isOpen} 
+                onClose={() => setIsOpen(false)}/>
             </div>
             
         </>

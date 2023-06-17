@@ -165,7 +165,7 @@ body{
 
 .option-container{
     width: 300px;
-    margin-top: 10px;
+    margin-top: 20px;
     display: flex;
     justify-content: space-evenly;
 }
@@ -181,13 +181,16 @@ body{
 }
 
 .match-list-container{
-    align-items: center;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
     margin: 10px;
 
+}
+.match-list-holder{
+    display: flex;
+    flex-direction: column;
 }
 
 .match-list-image-holder{
@@ -198,14 +201,47 @@ body{
     margin: 10px;
 }
 
-.match-list-holder{
-    display: flex;
-    flex-direction: column;
-
-}
 
 .match-list-container p{
     color: white;
     text-align: center;
+}
+
+.modal-style{
+    width: 700px;
+    height: 500px;
+    border-radius: 30px;
+    padding: 20px;
+    background: #e0e0e0;
+}
+
+.close-btn-style{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: inherit;
+}
+
+.close-btn-style button{
+    background-color: inherit;
+    border: none;
+}
+
+.close-btn-style img{
+    width: 30px;
+    height: 30px;
+}
+
+.modal-content-container{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.modal-content-description-container{
+    width: 500px;
 }
 
