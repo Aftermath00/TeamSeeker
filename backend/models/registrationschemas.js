@@ -47,6 +47,7 @@ const registerTeamSchema = new Schema(
           type: String,
           require: true
      }
+     
 }, {timestamps: true});
 const teamCollection =  new mongoose.model("teamCollection", registerTeamSchema);
 

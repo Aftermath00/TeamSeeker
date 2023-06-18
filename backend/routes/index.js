@@ -24,6 +24,7 @@ router.get('/', (_req, res) => {
      res.send('Welcome to TeamSekeer API');
 });
 
+
 router.post('/registerteam', teamRegistration);
 router.post('/registerapplicant', applicantRegistration);
 router.post('/userlogin', userLogin);
@@ -35,5 +36,6 @@ router.put('/editteamdetail/:id', editTeamDetail);
 router.put('/editapplicantdetail/:id', editApplicantDetail);
 router.get('/home/:username', applicantBySkillReq);
 router.post('/createaccount', creatingAccount);
+
 
 module.exports = router;
