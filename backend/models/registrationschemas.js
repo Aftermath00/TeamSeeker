@@ -1,8 +1,24 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const accountSchema = new Schema({
+     userName:{
+          type: String,
+          require: true
+     },
+     password:{
+          type: String,
+          require: true
+     }
+}, {timestamps: true});
+const accountCollection =  new mongoose.model("accountCollection", accountSchema);
+
 const registerTeamSchema = new Schema(
      {
+     userName:{
+          type: String,
+          require: true
+     },
      teamName:{
           type: String,
           require: true
@@ -30,23 +46,17 @@ const registerTeamSchema = new Schema(
      email:{
           type: String,
           require: true
-     },
-     password:{
-          type: String,
-          require: true
      }
      
 }, {timestamps: true});
 const teamCollection =  new mongoose.model("teamCollection", registerTeamSchema);
 
-const registerApplicantSchema = new Schema(
-
-{
-     fullName:{
+const registerApplicantSchema = new Schema({
+     userName:{
           type: String,
           require: true
      },
-     userName:{
+     fullName:{
           type: String,
           require: true
      },
@@ -70,19 +80,15 @@ const registerApplicantSchema = new Schema(
           type: String,
           require: true
      },
-     email:{
-          type: String,
-          require: true
-     },
      portofolioLink:{
           type: String,
           require: false
      },
-     password:{
+     email:{
           type: String,
           require: true
      }
 }, {timestamps: true});
 const applicantCollection =  new mongoose.model("applicantCollection", registerApplicantSchema);
 
-module.exports = {teamCollection, applicantCollection};
+module.exports = {accountCollection, teamCollection, applicantCollection};

@@ -5,6 +5,7 @@ const {
      applicantRegistration, 
      teamLogin,
      applicantLogin,
+     creatingAccount
 } = require('../controllers/authController')
 
 const {
@@ -35,7 +36,8 @@ router.delete('/delteam/:id', delTeamAccount);
 router.delete('/delapplicant/:id', delApplicantAccount);
 router.put('/editteamdetail/:id', editTeamDetail);
 router.put('/editapplicantdetail/:id', editApplicantDetail);
-router.get('/home/:id', teamNames);
+// router.get('/home/:id', teamNames);
+router.post('/createaccount', creatingAccount);
 
 
 module.exports = router;

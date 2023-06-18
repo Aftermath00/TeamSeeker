@@ -1,23 +1,48 @@
-const {teamCollection, applicantCollection} = require('../models/registrationschemas');
+const {teamCollection, applicantCollection, accountCollection} = require('../models/registrationschemas');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 
+const creatingAccount = async (req, res, next) => {
+  try {
+    const hashedPass = await bcrypt.hash(req.body.password, 10);
+
+    let existingUser = await accountCollection.findOne({ userName: req.body.userName });
+    if (existingUser) {
+      return res.status(409).json({ message: 'Username is already used!' });
+    }
+
+    const user = new accountCollection({
+      userName: req.body.userName,
+      password: hashedPass
+    });
+
+    user.save()
+      .then(() => {
+        res.status(200).json({
+          message: 'Account Creation Successful!'
+        });
+      })
+      .catch(err => {
+        res.status(500).json({
+          error: err
+        });
+      });
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};
+
+
 const teamRegistration = (req, res, next) => {
-     bcrypt.hash(req.body.password, 10, (err, hashedPass) => {
-          if(err){
-               res.json({
-                    error: err
-               })
-          }
           let team = new teamCollection ({
+               userName: req.body.userName,
                teamName: req.body.teamName,
                projectTitle: req.body.projectTitle, 
                objective: req.body.objective,
                position: req.body.position,
                skillReq: req.body.skillReq,
                description: req.body.description,
-               email: req.body.email,
-               password: hashedPass,
+               email: req.body.email
           })
           team.save()
                .then(team => {
@@ -30,22 +55,16 @@ const teamRegistration = (req, res, next) => {
                          error: err
                     })
                })
-     })
 
      
 
 }
 
 const applicantRegistration = (req, res, next) => {
-     bcrypt.hash(req.body.password, 10, (err, hashedPass) => {
-          if(err){
-               res.json({
-                    error: err
-               })
-          }
+
           let applicant = new applicantCollection ({
-               fullName: req.body.fullName,
                userName: req.body.userName,
+               fullName: req.body.fullName,
                major: req.body.major, 
                semester: req.body.semester,
                expertise: req.body.expertise,
@@ -53,7 +72,6 @@ const applicantRegistration = (req, res, next) => {
                description: req.body.description,
                portofolioLink: req.body.portofolioLink,
                email: req.body.email,
-               password: hashedPass,
 
           })
           applicant.save()
@@ -67,8 +85,6 @@ const applicantRegistration = (req, res, next) => {
                          error: err
                     })
                })
-     })
-
 }
 
 const teamLogin = (req, res, next) => {
@@ -136,6 +152,4 @@ const applicantLogin = (req, res, next) => {
 }
 
 
-
-
-module.exports = {teamRegistration, applicantRegistration, teamLogin, applicantLogin};
+module.exports = {creatingAccount, teamRegistration, applicantRegistration, teamLogin, applicantLogin};
