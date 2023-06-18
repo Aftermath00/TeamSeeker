@@ -16,6 +16,10 @@ const {
      editApplicantDetail
 } = require('../controllers/profileController')
 
+const {
+     teamNames
+} = require('../controllers/homeController')
+
 router.get('/', (_req, res) => {
      res.send('Welcome to TeamSekeer API');
 });
@@ -30,5 +34,6 @@ router.delete('/delteam/:id', delTeamAccount);
 router.delete('/delapplicant/:id', delApplicantAccount);
 router.put('/editteamdetail/:id', editTeamDetail);
 router.put('/editapplicantdetail/:id', editApplicantDetail);
+router.get('/home/:id', teamNames);
 
 module.exports = router;
