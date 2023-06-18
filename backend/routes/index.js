@@ -3,8 +3,7 @@ const router = express.Router();
 const {
      teamRegistration, 
      applicantRegistration, 
-     teamLogin,
-     applicantLogin,
+     userLogin,
      creatingAccount
 } = require('../controllers/authController')
 
@@ -18,7 +17,7 @@ const {
 } = require('../controllers/profileController')
 
 const {
-     teamNames
+     applicantBySkillReq
 } = require('../controllers/homeController')
 
 router.get('/', (_req, res) => {
@@ -27,15 +26,14 @@ router.get('/', (_req, res) => {
 
 router.post('/registerteam', teamRegistration);
 router.post('/registerapplicant', applicantRegistration);
-router.post('/teamlogin', teamLogin);
-router.post('/applicantlogin', applicantLogin);
+router.post('/userlogin', userLogin);
 router.get('/detailteam/:teamname', detailTeam);
 router.get('/detailapplicant/:username', detailApplication);
 router.delete('/delteam/:id', delTeamAccount);
 router.delete('/delapplicant/:id', delApplicantAccount);
 router.put('/editteamdetail/:id', editTeamDetail);
 router.put('/editapplicantdetail/:id', editApplicantDetail);
-// router.get('/home/:id', teamNames);
+router.get('/home/:username', applicantBySkillReq);
 router.post('/createaccount', creatingAccount);
 
 module.exports = router;

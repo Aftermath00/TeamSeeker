@@ -32,7 +32,6 @@ const creatingAccount = async (req, res, next) => {
   }
 };
 
-
 const teamRegistration = (req, res, next) => {
           let team = new teamCollection ({
                userName: req.body.userName,
@@ -55,9 +54,6 @@ const teamRegistration = (req, res, next) => {
                          error: err
                     })
                })
-
-     
-
 }
 
 const applicantRegistration = (req, res, next) => {
@@ -87,46 +83,14 @@ const applicantRegistration = (req, res, next) => {
                })
 }
 
-const teamLogin = (req, res, next) => {
-     let teamname = req.body.teamNameLogin
+const userLogin = (req, res, next) => {
+     let username = req.body.usernameLogin
      let password = req.body.passwordLogin
 
-     teamCollection.findOne({teamName:teamname})
-     .then(team =>{
-          if (team){
-               bcrypt.compare(password, team.password, (err, result) => {
-                    if (err){
-                         res.json({
-                              message: err
-                         }) 
-                    }
-                    if (result){
-                         res.json({
-                              message: 'Login Successful!'
-                         }) 
-                    } else{
-                         res.json({
-                              message: 'Wrong Password!'
-                         }) 
-                    }
-               })
-          } else{
-               res.json({
-                    message: 'No user found!'
-               })
-          }
-     })
-     
-}
-
-const applicantLogin = (req, res, next) => {
-     let username = req.body.usernameLogin
-     let password = req.body. 
-
-     applicantCollection.findOne({userName:username})
-     .then(applicant =>{
-          if (applicant){
-               bcrypt.compare(password, applicant.password, (err, result) => {
+     accountCollection.findOne({userName:username})
+     .then(account =>{
+          if (account){
+               bcrypt.compare(password, account.password, (err, result) => {
                     if (err){
                          res.json({
                               message: err
@@ -152,4 +116,4 @@ const applicantLogin = (req, res, next) => {
 }
 
 
-module.exports = {creatingAccount, teamRegistration, applicantRegistration, teamLogin, applicantLogin};
+module.exports = {creatingAccount, teamRegistration, applicantRegistration,userLogin};
