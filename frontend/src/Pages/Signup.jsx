@@ -1,8 +1,53 @@
 import { useNavigate } from "react-router-dom"
 import "../styles/login.css"
+import { useState } from "react"
 
 const Signup = () =>{
     const navigate = useNavigate()
+
+    const [userName,setUsername] = useState("")
+    const [password,setPassword] = useState("")
+    const [confirmPassword,setConfirmPassword] = useState("")
+
+    const userNameFormChange = (event) =>{
+        setUsername(event.target.value)
+    }
+
+    const passwordFormChange = (event) =>{
+        setPassword(event.target.value)
+    }
+
+    const confirmPasswordFormChange = (event) =>{
+        setConfirmPassword(event.target.value)
+    }
+
+    const signUpButtonHandler = () =>{
+
+        if(password == '' || password != confirmPassword){
+            alert('password does not match')
+        }
+
+        const authenticationData = {
+            "username": userName,
+            "password": password
+        }
+
+        const hasAllValues = Object.values(authenticationData).every(value => {
+            return value !== "" && value !== null && value !== undefined;
+          });
+          
+          if (hasAllValues) {
+            console.log("All properties have values");
+            console.log(authenticationData)
+
+            navigate('/role')
+
+          } else {
+            console.log("Some properties are missing values");
+            alert('Please fill out all of the form')
+          }
+
+    }
 
     return (
 
@@ -15,12 +60,18 @@ const Signup = () =>{
         <h2>Find the Best Teammate Here</h2>
 
         <label className="credential-field-label"> Username </label>
-        <input type="text" id="username-field" className="credential-field"/>
+        <input value={userName} onChange={userNameFormChange} 
+        type="text" id="username-field" className="credential-field"/>
 
         <label className="credential-field-label"> Password </label>
-        <input type="password" className="credential-field"/>
+        <input value={password} onChange={passwordFormChange}
+        type="password" className="credential-field"/>
+        
+        <label className="credential-field-label"> Confirm Password </label>
+        <input value={confirmPassword} onChange={confirmPasswordFormChange}
+        type="password" className="credential-field"/>
 
-        <button className="sign-btn" onClick={() => navigate('/role')}>Sign Up</button>
+        <button className="sign-btn" onClick={() => signUpButtonHandler()}>Sign Up</button>
         <p>Already have Account? <a onClick={() => navigate('/')} className="link-label">Sign In</a></p>   
         
         </div>

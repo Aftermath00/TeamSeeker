@@ -56,6 +56,8 @@ const teamRegistration = (req, res, next) => {
                     })
                })
 
+     
+
 }
 
 const applicantRegistration = (req, res, next) => {
