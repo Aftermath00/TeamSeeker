@@ -3,24 +3,24 @@ const {teamCollection, applicantCollection} = require('../models/registrationsch
 
 // get detail team by teamname
 const detailTeam = async (req, res, next) => {
-     let teamname
+     let dataTeamDetail
      try{
-          teamname = await teamCollection.find({teamName: req.params.teamname})
-          if (teamname == null){
+          dataTeamDetail = await teamCollection.find({userName: req.params.username})
+          if (dataTeamDetail == null){
                return res.status(404).json({message: 'Team Not Found'})
           }
      } catch (err){
           return res.status(500).json({message: err.message + "~"})
      }
      return res.status(200).json({
-          teamname
+          dataTeamDetail
      })
 }
 
 // update team detail
 const editTeamDetail = async (req, res, next) => {
      try{
-          const data = await teamCollection.findByIdAndUpdate(new ObjectId(req.params.id), req.body) 
+          const data = await teamCollection.findOneAndUpdate({userName: req.params.username}, req.body) 
           if (!data){
                return res.status(404).json({message: 'Data Not Found'})
           }
@@ -33,7 +33,7 @@ const editTeamDetail = async (req, res, next) => {
 // delete team account
 const delTeamAccount = async (req, res, next) => {
      try {
-       const deletedTeam = await teamCollection.findOneAndDelete({ _id: new ObjectId(req.params.id) });
+       const deletedTeam = await teamCollection.findOneAndDelete({userName: req.params.username});
        if (deletedTeam === null) {
          return res.status(404).json({ message: 'Team Not Found' });
        } else {
@@ -44,12 +44,12 @@ const delTeamAccount = async (req, res, next) => {
      }
 };
 
-// get detail application by username
-const detailApplication = async (req, res, next) => {
-     let username
+// get detail applicant by username
+const detailApplicant = async (req, res, next) => {
+     let dataDetailApplicant
      try{
-          username = await applicantCollection.find({userName: req.params.id})
-          if (username == null){
+          dataDetailApplicant = await applicantCollection.find({userName: req.params.username})
+          if (dataDetailApplicant == null){
                return res.status(404).json({message: 'Applicant Not Found'})
           }
      } catch (err){
@@ -57,14 +57,14 @@ const detailApplication = async (req, res, next) => {
      }
 
      return res.status(200).json({
-          username
+          dataDetailApplicant
      })
 }
 
 // update applicant detail
 const editApplicantDetail = async (req, res, next) => {
      try{
-          const data = await applicantCollection.findByIdAndUpdate(new ObjectId(req.params.id), req.body) 
+          const data = await applicantCollection.findOneAndUpdate({userName: req.params.username}, req.body) 
           if (!data){
                return res.status(404).json({message: 'Data Not Found'})
           }
@@ -77,11 +77,11 @@ const editApplicantDetail = async (req, res, next) => {
 // delete applicant account
 const delApplicantAccount = async (req, res, next) => {
      try {
-       const deletedApplicant = await applicantCollection.findOneAndDelete({ _id: new ObjectId(req.params.id) });
+       const deletedApplicant = await applicantCollection.findOneAndDelete({userName: req.params.username});
        if (deletedApplicant === null) {
-         return res.status(404).json({ message: 'Team Not Found' });
+         return res.status(404).json({ message: 'Applicant Not Found' });
        } else {
-         return res.status(200).json({ message: 'Team deleted successfully' });
+         return res.status(200).json({ message: 'Applicant deleted successfully' });
        }
      } catch (error) {
        return res.status(500).json({ error: error.message });
@@ -90,7 +90,7 @@ const delApplicantAccount = async (req, res, next) => {
 
 module.exports = {
      detailTeam,
-     detailApplication,
+     detailApplicant,
      delTeamAccount,
      delApplicantAccount,
      editTeamDetail, 

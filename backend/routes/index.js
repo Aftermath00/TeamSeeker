@@ -9,7 +9,7 @@ const {
 
 const {
      detailTeam,
-     detailApplication,
+     detailApplicant,
      delTeamAccount,
      delApplicantAccount,
      editTeamDetail,
@@ -28,12 +28,12 @@ router.get('/', (_req, res) => {
 router.post('/registerteam', teamRegistration);
 router.post('/registerapplicant', applicantRegistration);
 router.post('/userlogin', userLogin);
-router.get('/detailteam/:teamname', detailTeam);
-router.get('/detailapplicant/:username', detailApplication);
-router.delete('/delteam/:id', delTeamAccount);
-router.delete('/delapplicant/:id', delApplicantAccount);
-router.put('/editteamdetail/:id', editTeamDetail);
-router.put('/editapplicantdetail/:id', editApplicantDetail);
+router.get('/detailteam/:username', detailTeam);
+router.get('/detailapplicant/:username', detailApplicant);
+router.delete('/delteam/:username', delTeamAccount);
+router.delete('/delapplicant/:username', delApplicantAccount);
+router.put('/editteamdetail/:username', editTeamDetail);
+router.put('/editapplicantdetail/:username', editApplicantDetail);
 router.get('/home/:username', applicantBySkillReq);
 router.post('/createaccount', creatingAccount);
 
