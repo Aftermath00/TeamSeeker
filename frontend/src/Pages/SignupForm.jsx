@@ -9,6 +9,69 @@ const SignupForm = () =>{
     const [isClickedMale, setIsClickedMale] = useState(false);
     const [isClickedFemale, setIsClickedFemale] = useState(false);
 
+    const [fullName,setFullName] = useState("");
+    const [major, setMajor] = useState("")
+    const [year, setYear] = useState("")
+    const [gender,setGender] = useState("")
+    const [expertise,setExpertise] = useState("")
+    const [skill,setSkill] = useState("")
+    const [phone,setPhone] = useState("")
+    const [email,setEmail] = useState("")
+    const [portofolioLink,setPortofolioLink] = useState("")
+    const [linkedInLink,setLinkedInLink] = useState("")
+    const [description,setDescription] = useState("")
+
+
+    const nameFormChange = (event) =>{
+        setFullName(event.target.value)
+    }
+    
+    const majorFormChange = (event) =>{
+        setMajor(event.target.value)
+    }
+
+    const yearFormChange = (event) =>{
+        setYear(event.target.value)
+    }
+
+    const genderFormChange = () =>{
+        if(isClickedMale){
+            setGender("male")
+        }
+
+        else if(isClickedFemale){
+            setGender("female")
+        }
+    }
+
+    const expertiseFormChange = (event) =>{
+        setExpertise(event.target.value)
+    }
+
+    const skillFormChange = (event) =>{
+        setSkill(event.target.value)
+    }
+
+    const phoneFormChange = (event) =>{
+        setPhone(event.target.value)
+    }
+
+    const emailFormChange = (event) =>{
+        setEmail(event.target.value)
+    }
+
+    const portofolioFormChange = (event) =>{
+        setPortofolioLink(event.target.value)
+    }
+
+    const linkedInFormChange = (event) =>{
+        setLinkedInLink(event.target.value)
+    }
+
+    const descriptionFormChange = (event) =>{
+        setDescription(event.target.value)
+    }
+
     const handleGenderButtonClick = () => {
       setIsClickedMale(true)
         setIsClickedFemale(false)
@@ -21,6 +84,45 @@ const SignupForm = () =>{
       console.log('button clicked')
     };
 
+    const createAccountButtonHandler = () =>{
+        
+        if(isClickedMale){
+            setGender("male")
+        }
+
+        else if(isClickedFemale){
+            setGender("female")
+        }
+        
+        const userData = {
+            "fullName":fullName,
+            "major":major,
+            "year":year,
+            "gender":gender,
+            "expertise":expertise,
+            "skill":skill,
+            "phone":phone,
+            "email":email,
+            "portofolioLink":portofolioLink,
+            "linkedInLink":linkedInLink,
+            "description":description
+        };
+
+        const hasAllValues = Object.values(userData).every(value => {
+            return value !== "" && value !== null && value !== undefined;
+          });
+          
+          if (hasAllValues) {
+            console.log("All properties have values");
+            console.log(userData)
+            navigate('/home')
+
+          } else {
+            console.log("Some properties are missing values");
+            alert('Please fill out all of the form')
+          }
+    }
+
     return (
 
             <div className="signup-form-main-container">
@@ -32,13 +134,13 @@ const SignupForm = () =>{
                     <div className="long-form-container">
 
                         <label>Full Name</label>
-                        <input type="text"/>
+                        <input value={fullName} onChange={nameFormChange} type="text"/>
 
                         <label>Major</label>
-                        <input type="text"/>
+                        <input value={major} onChange={majorFormChange} type="text"/>
 
                         <label>Year</label>
-                        <input type="text"/>
+                        <input value={year} onChange={yearFormChange} type="text"/>
 
                         <label>Gender</label>
 
@@ -53,13 +155,23 @@ const SignupForm = () =>{
                         </div>
 
                         <label>Expertise</label>
-                        <input type="text"/>
+                        <input value={expertise} onChange={expertiseFormChange} type="text"/>
+                        
+                        <label>Skill</label>
+                        <input value={skill} onChange={skillFormChange} type="text"/>
+                        
+                        <label>Phone (WhatsApp)</label>
+                        <input value={phone} onChange={phoneFormChange} type="text"/>
+                        
+                        <label>Email</label>
+                        <input value={email} onChange={emailFormChange} type="text"/>
+                        
 
                         <label>Portofolio Link</label>
-                        <input type="text"/>
+                        <input value={portofolioLink} onChange={portofolioFormChange} type="text"/>
 
                         <label>LinkedIn Link</label>
-                        <input type="text"/>
+                        <input value={linkedInLink} onChange={linkedInFormChange} type="text"/>
 
                     </div>
                     
@@ -78,14 +190,14 @@ const SignupForm = () =>{
                         
                         <div className="describe-form-container">
                             <h3>Describe Yourself</h3>
-                            <textarea className="describe-form" type="text"/>
+                            <textarea value={description} onChange={descriptionFormChange} className="describe-form" type="text"/>
                         </div>
 
                     </div>
                 </div>
 
                 <div className="continue-button-container">
-                    <button onClick={() => navigate('/home')}>Continue</button>
+                    <button onClick={() => createAccountButtonHandler()}>Create Account</button>
                 </div>
 
             </div>
