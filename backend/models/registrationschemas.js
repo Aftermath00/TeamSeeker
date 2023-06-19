@@ -46,6 +46,10 @@ const registerTeamSchema = new Schema(
      email:{
           type: String,
           require: true
+     },
+     phoneNum:{
+          type: String,
+          require: true
      }
      
 }, {timestamps: true});
@@ -64,7 +68,7 @@ const registerApplicantSchema = new Schema({
           type: String,
           require: true
      },
-     semester:{
+     year:{
           type: Number,
           require: true
      },
@@ -81,6 +85,14 @@ const registerApplicantSchema = new Schema({
           require: true
      },
      portofolioLink:{
+          type: String,
+          require: false
+     },
+     linkedlnLink:{
+          type: String,
+          require: false
+     },
+     phoneNum:{
           type: String,
           require: false
      },

@@ -41,7 +41,8 @@ const teamRegistration = (req, res, next) => {
                position: req.body.position,
                skillReq: req.body.skillReq,
                description: req.body.description,
-               email: req.body.email
+               email: req.body.email,
+               phoneNum: req.body.phonenum
           })
           team.save()
                .then(team => {
@@ -62,13 +63,14 @@ const applicantRegistration = (req, res, next) => {
                userName: req.body.userName,
                fullName: req.body.fullName,
                major: req.body.major, 
-               semester: req.body.semester,
+               year: req.body.year,
                expertise: req.body.expertise,
                skill: req.body.skill,
                description: req.body.description,
                portofolioLink: req.body.portofolioLink,
+               linkedlnLink: req.body.linkedlnLink,
                email: req.body.email,
-
+               phoneNum: req.body.phonenum
           })
           applicant.save()
                .then(() => {
