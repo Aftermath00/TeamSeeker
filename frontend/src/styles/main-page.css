@@ -41,7 +41,6 @@ body{
 }
 
 .left-side-bar h2{
-    color: white;
     margin: 10px;
     font-weight: bold;
     text-align: center;
@@ -203,7 +202,7 @@ body{
 
 
 .match-list-container p{
-    color: white;
+    color: black;
     text-align: center;
 }
 
@@ -243,5 +242,14 @@ body{
 
 .modal-content-description-container{
     width: 500px;
+}
+
+.unmatch-btn{
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
 }
 

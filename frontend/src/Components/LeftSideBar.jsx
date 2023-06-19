@@ -34,9 +34,14 @@ const LeftSideBar = ({matchList,setMatchList,userNameData}) =>{
             </div>
         </div>
 
-        <h2>Matches</h2>
+        <h2 style={{ color: 'white' }}>Matches</h2>
 
-        <MatchList matchList = {matchList}/>
+        <MatchList 
+        setMatchList = {setMatchList}
+        userNameData = {userNameData} 
+        matchList = {matchList}/>
+
+
         
         </div>
         </>
