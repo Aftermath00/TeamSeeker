@@ -1,6 +1,26 @@
+import axios from "axios"
 import "../styles/main-page.css"
 import MatchList from "./MatchList"
-const LeftSideBar = ({matchList,setMatchList}) =>{
+import { useEffect, useState } from "react"
+const LeftSideBar = ({matchList,setMatchList,userNameData}) =>{
+
+    const [userDetail,setUserDetail] = useState({})
+
+    const getUserDataFromAPI = async () =>{
+
+        const response = await axios(`http://localhost:3000/api/detailteam/${userNameData}`)
+
+        console.log("the data:",response.data)
+
+        setUserDetail(response.data.dataTeamDetail[0])
+
+    }
+
+    useEffect(() => {
+
+        getUserDataFromAPI()
+        
+    }, []);
 
     return(
         <>
@@ -9,8 +29,8 @@ const LeftSideBar = ({matchList,setMatchList}) =>{
         <div className="current-user-profile-viewer">
             <img className="profile-image-holder" src="src\assets\EZPark.png"/>
             <div className="name-info-container">
-                <p className="name-holder">EZPark</p>
-                <p >Gemastik</p>
+                <p className="name-holder">{userDetail.teamName }</p>
+                <p >{userDetail.objective}</p>
             </div>
         </div>
 

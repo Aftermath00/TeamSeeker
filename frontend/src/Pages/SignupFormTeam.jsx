@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -9,7 +10,7 @@ const SignupFormTeam = () =>{
 
     
 
-    const userNameData = location.state?.data
+    const userNameData = location.state?.data.username
 
     const [teamName,setTeamName] = useState("")
     const [projectTitle,setProjectTitle] = useState("")
@@ -52,7 +53,7 @@ const SignupFormTeam = () =>{
         setDescription(event.target.value)
     }
 
-    const createTeamButtonHandler = () =>{
+    const createTeamButtonHandler = async () =>{
         const userData = {
             "teamName":teamName,
             "projectTitle":projectTitle,
@@ -71,7 +72,36 @@ const SignupFormTeam = () =>{
           if (hasAllValues) {
             console.log("All properties have values");
             console.log(userData)
-            navigate('/home')
+
+            try {
+
+                const teamData = {
+                    "userName":userNameData,
+                    "teamName":teamName,
+                    "projectTitle":projectTitle,
+                    "objective":objective,
+                    "position":position,
+                    "skillReq":[skill],
+                    "description":description,
+                    "email":email
+                }
+                
+                const response = await axios.post('http://localhost:3000/api/registerteam',teamData)
+
+                console.log("response message:",response.data.message)
+
+                navigate('/',{
+                    state:{
+                        data: userNameData
+                    }
+                })
+
+
+            } catch (error) {
+                alert('something wrong with the server')
+                console.log('error message:',error)
+            }
+
 
           } else {
             console.log("Some properties are missing values");

@@ -40,8 +40,6 @@ const Signup = () =>{
           });
           
           if (hasAllValues) {
-            console.log("All properties have values");
-            console.log(authenticationData)
 
             const usernameData = {
                 "username":userName
@@ -51,6 +49,7 @@ const Signup = () =>{
                 
                 const response = await axios.post('http://localhost:3000/api/createaccount',authenticationData)
                 console.log('response data:',response.data)
+                
                 navigate('/role',{
                     state:{
                         data: usernameData

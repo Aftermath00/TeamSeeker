@@ -118,7 +118,7 @@ const SignupForm = () =>{
         }; */
 
         const userData = {
-            "userName":'bodat',
+            "userName":userNameData.username,
             "fullName":fullName,
             "major":major,
             "semester":3,
@@ -144,7 +144,7 @@ const SignupForm = () =>{
 
                 console.log('response data:',response.data)
 
-                navigate('/home')
+                navigate('/')
 
                 
             } catch (error) {

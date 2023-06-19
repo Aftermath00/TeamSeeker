@@ -37,7 +37,17 @@ export default function Login(){
                 const response = await axios.post('http://localhost:3000/api/userlogin',loginData)
                 
                 if(response.data.message == "Login Successful!"){
-                    navigate('/home')
+
+                    const usernameData = {
+                        "username":loginData.usernameLogin
+                    }
+
+                    navigate('/home',{
+                        state:{
+                            data: usernameData
+                        }
+                    })
+
                     console.log('login success')
                 }
 

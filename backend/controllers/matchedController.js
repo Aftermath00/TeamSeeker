@@ -3,6 +3,7 @@ const {matchedCollection, applicantCollection, teamCollection} = require('../mod
 
 // adding matched
 const addingMatched = (req, res, next) => {
+
      let matching = new matchedCollection({
           userNameTeam: req.body.userNameTeam,
           userNameApplicants: req.body.userNameApplicants,
@@ -42,6 +43,7 @@ const deleletingMatch = async (req, res, next) => {
      try {
           const usernameteam = req.body.usernameTeam;
           const usernameapplicant = req.body.usernameApplicant;
+          
           const updatedMatch = await matchedCollection.updateOne(
                { userNameTeam: usernameteam },
                { $pull: { userNameApplicants: usernameapplicant } }

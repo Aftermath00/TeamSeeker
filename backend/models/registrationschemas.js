@@ -12,9 +12,8 @@ const accountSchema = new Schema({
      }
 }, {timestamps: true});
 
+
 const accountCollection =  new mongoose.model("accountCollection", accountSchema);
-
-
 
 const registerTeamSchema = new Schema(
      {
@@ -51,8 +50,6 @@ const registerTeamSchema = new Schema(
           require: true
      },
      
-
-
      
 }, {timestamps: true});
 const teamCollection =  new mongoose.model("teamCollection", registerTeamSchema);
