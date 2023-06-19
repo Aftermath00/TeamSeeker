@@ -2,7 +2,9 @@ import { useState } from "react"
 import "../styles/main-page.css"
 import Card from "./Card"
 import userData from "../../dummyData/userData"
-const ContentContainer = ({matchList,setMatchList}) =>{
+import axios from "axios"
+
+const ContentContainer = ({matchList,setMatchList,userNameData}) =>{
 
     const applicantNotFound = {
         "name": "No Applicant Available",
@@ -20,22 +22,36 @@ const ContentContainer = ({matchList,setMatchList}) =>{
     const [cardData, setCardData] = useState(
         userData[0]
     )
-    const match = () => {
+    const match = async() => {
         
         if(count != userData.length-1){
 
-            setCardData(userData[count+1]);
+            const matchUserData = {
+                "userNameTeam":userNameData,
+                "userNameApplicants":userData.username
+            }
 
-            userData[count].id = crypto.randomUUID()
+            const response = await axios.post('http://localhost:3000/api/matched',matchUserData)
 
-            setMatchList(currentList =>{
-                return [
-                    ...currentList,
-                    userData[count]
-                ]
-            })
+            if(response.data.message == 'Matching Successful!'){
 
-            setCount(count+1);
+                setCardData(userData[count+1]);
+
+                userData[count].id = crypto.randomUUID()
+    
+                setMatchList(currentList =>{
+                    return [
+                        ...currentList,
+                        userData[count]
+                    ]
+                })
+
+                setCount(count+1);
+
+                console.log('adding match success')
+
+            }
+
         }
 
         if(count == userData.length){

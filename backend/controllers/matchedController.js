@@ -2,27 +2,21 @@ const {matchedCollection, applicantCollection, teamCollection} = require('../mod
 
 
 // adding matched
-const addingMatched = async (req, res, next) => {
-     try {
-          const userNameTeam = req.body.userNameTeam
-          const userNameApplicants = req.body.userNameApplicants
-
-          let userNameTeamChecking = await matchedCollection.findOne({userNameTeam: userNameTeam })
-          if (userNameTeamChecking != null){
-               userNameTeamChecking.userNameApplicants.push(userNameApplicants)                    
-          } else{
-               userNameTeamChecking = new matchedCollection({
-                    userNameTeam: userNameTeam,
-                    userNameApplicants: [userNameApplicants]
-               });
-          }
-          await userNameTeamChecking.save()
-          res.json({
-               message: "Matching Successful!"
+const addingMatched = (req, res, next) => {
+     let matching = new matchedCollection({
+          userNameTeam: req.body.userNameTeam,
+          userNameApplicants: req.body.userNameApplicants,
+     })
+     matching.save()
+          .then(() => {
+               res.json({
+                    message: "Matching Successful!"
+               })
           })
-     } catch (error) {
-          res.status(500).json({
-               error: error.message
+          .catch(err => { 
+               res.status(500).json({
+                    error: err
+               })
           })
      }
 }
@@ -49,6 +43,7 @@ const deleletingMatch = async (req, res, next) => {
      try {
           const usernameteam = req.body.usernameTeam;
           const usernameapplicant = req.body.usernameApplicant;
+          
           const updatedMatch = await matchedCollection.updateOne(
                { userNameTeam: usernameteam },
                { $pull: { userNameApplicants: usernameapplicant } }
