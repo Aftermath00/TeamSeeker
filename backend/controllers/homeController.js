@@ -1,4 +1,3 @@
-const { ObjectId } = require('mongodb');
 const {teamCollection, applicantCollection} = require('../models/registrationschemas');
 
 const searchApplicantSkills = async (keywords) => {
@@ -17,8 +16,8 @@ const searchApplicantSkills = async (keywords) => {
 
 const applicantBySkillReq = async (req, res, next) => {
      try{
-          const username = new ObjectId(req.params.username);
-          const teamData = await teamCollection.findById(username);
+          const username = req.params.username;
+          const teamData = await teamCollection.findOne({userName: username});
           if (teamData){
                const applicantBySkills = await searchApplicantSkills(teamData.skillReq);
                return res.status(200).json({applicantBySkills})
