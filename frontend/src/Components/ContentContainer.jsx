@@ -28,8 +28,9 @@ const ContentContainer = ({matchList,setMatchList,userNameData}) =>{
         if(count != userData.length-1){
 
             const matchUserData = {
+
                 "userNameTeam":userNameData,
-                "userNameApplicants":userData.username
+                "userNameApplicants":userData[count].username
             }
 
             const response = await axios.post('http://localhost:3000/api/matched',matchUserData)

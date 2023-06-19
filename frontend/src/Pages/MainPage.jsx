@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import ContentContainer from "../Components/ContentContainer"
 import LeftSideBar from "../Components/LeftSideBar"
 import "../styles/main-page.css"
-import axios from "axios"
 import { useLocation } from "react-router-dom"
 
 const MainPage = () =>{

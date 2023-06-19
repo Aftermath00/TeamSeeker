@@ -8,6 +8,7 @@ const MatchList = ({matchList,userNameData,setMatchList}) =>{
     const [currentData,setCurrentData] = useState({})
 
     const clickProfilePict = (data) =>{
+
         setCurrentData(data)
         setIsUserDetailModalOpen(true)
 
@@ -27,7 +28,11 @@ const MatchList = ({matchList,userNameData,setMatchList}) =>{
             "usernameApplicant":currentData.username
         }
 
-        const response = await axios.delete('http://localhost:3000/api/delmatch',deleteData)
+        console.log('team username:',deleteData.usernameTeam)
+        console.log('applicant username:',deleteData.usernameApplicant)
+
+
+        const response = await axios.delete('http://localhost:3000/api/delmatch',{ data: deleteData })
 
         if(response.data.message == "Match deleted successfully"){
 
@@ -36,7 +41,10 @@ const MatchList = ({matchList,userNameData,setMatchList}) =>{
             setIsUserDetailModalOpen(false)
 
             console.log("just remove")
+            
+            return
         }
+        
     }
 
 
