@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import "../styles/login.css"
 import { useState } from "react"
+import axios from "axios"
 
 const Signup = () =>{
+
     const navigate = useNavigate()
 
     const [userName,setUsername] = useState("")
@@ -21,14 +23,15 @@ const Signup = () =>{
         setConfirmPassword(event.target.value)
     }
 
-    const signUpButtonHandler = () =>{
+    const signUpButtonHandler = async() =>{
 
         if(password == '' || password != confirmPassword){
             alert('password does not match')
+            return
         }
 
         const authenticationData = {
-            "username": userName,
+            "userName": userName,
             "password": password
         }
 
@@ -40,7 +43,29 @@ const Signup = () =>{
             console.log("All properties have values");
             console.log(authenticationData)
 
-            navigate('/role')
+            const usernameData = {
+                "username":userName
+            }
+
+            try {
+                
+                const response = await axios.post('http://localhost:3000/api/createaccount',authenticationData)
+                console.log('response data:',response.data)
+                navigate('/role',{
+                    state:{
+                        data: usernameData
+                    }
+                })
+                
+            } catch (error) {
+                console.log("error",error)
+                alert('username already exist')
+                setUsername('')
+                setPassword('')
+                setConfirmPassword('')
+                return
+            }
+            
 
           } else {
             console.log("Some properties are missing values");

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import "../styles/login.css"
 import { useState } from "react"
+import axios from "axios"
 
 export default function Login(){
 
@@ -17,11 +18,11 @@ export default function Login(){
         setPassword(event.target.value)
     }
 
-    const loginButtonFormHandler = () =>{
+    const loginButtonFormHandler = async() =>{
 
         const loginData = {
-            "username":userName,
-            "password":password
+            "usernameLogin":userName,
+            "passwordLogin":password
         }
 
         const hasAllValues = Object.values(loginData).every(value => {
@@ -29,10 +30,32 @@ export default function Login(){
           });
           
           if (hasAllValues) {
-            console.log("All properties have values");
             console.log(loginData)
 
-            navigate('/home')
+            try {
+
+                const response = await axios.post('http://localhost:3000/api/userlogin',loginData)
+                
+                if(response.data.message == "Login Successful!"){
+                    navigate('/home')
+                    console.log('login success')
+                }
+
+                else if(response.data.message == "No user found!"){
+                    alert('user not found')
+                    return
+                }
+
+                else if(response.data.message == "Wrong Password!"){
+                    alert('wrong password')
+                    return
+                }
+                
+            } catch (error) {
+                alert("axios error")
+                console.log('error: ',error)
+            }
+
 
           } else {
             console.log("Some properties are missing values");

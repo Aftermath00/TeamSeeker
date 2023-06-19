@@ -1,10 +1,16 @@
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import "../styles/choose-role.css"
 import { useState } from "react"
 
 const SignupRoleChoosePage = () =>{
 
     const navigate = useNavigate()
+
+    const location = useLocation()
+
+    const userNameData = location.state?.data
+    
+    console.log("username:",userNameData)
 
     const [isTeamClicked,setIsTeamClicked] = useState(false)
     const [isIndividualClicked,setIsIndividualClicked] = useState(false)
@@ -23,11 +29,19 @@ const SignupRoleChoosePage = () =>{
 
       const handleContinueButtonClick = () =>{
         if(isIndividualClicked){
-            navigate('/individual')
+            navigate('/individual',{
+                state:{
+                    data: userNameData
+                }
+            })
         }
 
         else if(isTeamClicked){
-            navigate('/team')
+            navigate('/team',{
+                state:{
+                    data: userNameData
+                }
+            })
         }
 
         else{
