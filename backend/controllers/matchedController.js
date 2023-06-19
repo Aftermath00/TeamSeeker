@@ -2,23 +2,29 @@ const {matchedCollection, applicantCollection, teamCollection} = require('../mod
 
 
 // adding matched
-const addingMatched = (req, res, next) => {
+const addingMatched = async (req, res, next) => {
+     try {
+          const userNameTeam = req.body.userNameTeam
+          const userNameApplicants = req.body.userNameApplicants
 
-     let matching = new matchedCollection({
-          userNameTeam: req.body.userNameTeam,
-          userNameApplicants: req.body.userNameApplicants,
-     })
-     matching.save()
-          .then(() => {
-               res.json({
-                    message: "Matching Successful!"
-               })
+          let userNameTeamChecking = await matchedCollection.findOne({userNameTeam: userNameTeam })
+          if (userNameTeamChecking != null){
+               userNameTeamChecking.userNameApplicants.push(userNameApplicants)                    
+          } else{
+               userNameTeamChecking = new matchedCollection({
+                    userNameTeam: userNameTeam,
+                    userNameApplicants: [userNameApplicants]
+               });
+          }
+          await userNameTeamChecking.save()
+          res.json({
+               message: "Matching Successful!"
           })
-          .catch(err => { 
-               res.status(500).json({
-                    error: err
-               })
+     } catch (error) {
+          res.status(500).json({
+               error: error.message
           })
+     }
 }
 
 // getting matches
@@ -47,11 +53,11 @@ const deleletingMatch = async (req, res, next) => {
           const updatedMatch = await matchedCollection.updateOne(
                { userNameTeam: usernameteam },
                { $pull: { userNameApplicants: usernameapplicant } }
-             );
+          );
          
-             if (updatedMatch.nModified === 0) {
+          if (updatedMatch.nModified === 0) {
                return res.status(404).json({ message: 'Team or Applicant Not Found' });
-             }
+          }
           return res.status(200).json({ message: 'Match deleted successfully' });
      } catch (error) {
           return res.status(500).json({ error: error.message });

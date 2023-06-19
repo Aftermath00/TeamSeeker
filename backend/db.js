@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const url = process.env.ATLAS_URL;
+const url = process.env.DB_URL;
 
 function dbConn (){
      const connectionParams={
