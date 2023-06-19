@@ -14,8 +14,6 @@ const accountSchema = new Schema({
 
 const accountCollection =  new mongoose.model("accountCollection", accountSchema);
 
-
-
 const registerTeamSchema = new Schema(
      {
      userName:{
@@ -53,15 +51,7 @@ const registerTeamSchema = new Schema(
      phoneNum:{
           type: String,
           require: true
-     },
-     phoneNum:{
-          type: String,
-          require: true
-     },
-     
-
-
-     
+     },    
 }, {timestamps: true});
 const teamCollection =  new mongoose.model("teamCollection", registerTeamSchema);
 
