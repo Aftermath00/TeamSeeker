@@ -1,10 +1,15 @@
 import { useState } from "react";
 import "../styles/signup-form.css"
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SignupForm = () =>{
 
     const navigate = useNavigate()
+
+    const location = useLocation()
+
+    const userNameData = location.state?.data
 
     const [isClickedMale, setIsClickedMale] = useState(false);
     const [isClickedFemale, setIsClickedFemale] = useState(false);
@@ -73,6 +78,7 @@ const SignupForm = () =>{
     }
 
     const handleGenderButtonClick = () => {
+
       setIsClickedMale(true)
         setIsClickedFemale(false)
 
@@ -84,7 +90,8 @@ const SignupForm = () =>{
       console.log('button clicked')
     };
 
-    const createAccountButtonHandler = () =>{
+    const createAccountButtonHandler =  async() =>{
+
         
         if(isClickedMale){
             setGender("male")
@@ -94,18 +101,32 @@ const SignupForm = () =>{
             setGender("female")
         }
         
-        const userData = {
+       /*  const userData = {
+            "userName":userNameData,
             "fullName":fullName,
             "major":major,
+            "semester":"4",
+            "expertise":expertise,
+            "skill":[skill],
+            "description":description,
             "year":year,
             "gender":gender,
-            "expertise":expertise,
-            "skill":skill,
             "phone":phone,
             "email":email,
             "portofolioLink":portofolioLink,
             "linkedInLink":linkedInLink,
-            "description":description
+        }; */
+
+        const userData = {
+            "userName":'bodat',
+            "fullName":fullName,
+            "major":major,
+            "semester":3,
+            "expertise":expertise,
+            "skill":[skill],
+            "description":description,
+            "portofolioLink":portofolioLink,
+            "email":email
         };
 
         const hasAllValues = Object.values(userData).every(value => {
@@ -114,8 +135,23 @@ const SignupForm = () =>{
           
           if (hasAllValues) {
             console.log("All properties have values");
-            console.log(userData)
-            navigate('/home')
+
+            try {
+
+                console.log(userData)
+
+                const response = await axios.post('http://localhost:3000/api/registerapplicant',userData)
+
+                console.log('response data:',response.data)
+
+                navigate('/home')
+
+                
+            } catch (error) {
+                console.log('error:',error)
+                alert('something went wrong')
+            }
+
 
           } else {
             console.log("Some properties are missing values");
