@@ -1,4 +1,3 @@
-const { ObjectId } = require('mongodb');
 const {teamCollection, applicantCollection} = require('../models/registrationschemas');
 
 // get detail team by teamname

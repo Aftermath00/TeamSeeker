@@ -17,6 +17,12 @@ const {
 } = require('../controllers/profileController')
 
 const {
+     addingMatched,
+     gettingMatches,
+     deleletingMatch
+} = require('../controllers/matchedController')
+
+const {
      applicantBySkillReq
 } = require('../controllers/homeController')
 
@@ -36,6 +42,9 @@ router.put('/editteamdetail/:username', editTeamDetail);
 router.put('/editapplicantdetail/:username', editApplicantDetail);
 router.get('/home/:username', applicantBySkillReq);
 router.post('/createaccount', creatingAccount);
+router.post('/matched', addingMatched)
+router.get('/matches', gettingMatches)
+router.delete('/delmatch', deleletingMatch)
 
 
 module.exports = router;

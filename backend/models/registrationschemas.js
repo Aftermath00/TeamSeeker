@@ -91,4 +91,16 @@ const registerApplicantSchema = new Schema({
 }, {timestamps: true});
 const applicantCollection =  new mongoose.model("applicantCollection", registerApplicantSchema);
 
-module.exports = {accountCollection, teamCollection, applicantCollection};
+const matchedSchema = new Schema({
+     userNameTeam: {
+          type: String,
+          require: true
+     },
+     userNameApplicants: {
+          type: [String],
+          require: true
+     }
+}, {timestamps: true})
+const matchedCollection =  new mongoose.model("matchedCollection", matchedSchema)
+
+module.exports = {accountCollection, teamCollection, applicantCollection, matchedCollection};
