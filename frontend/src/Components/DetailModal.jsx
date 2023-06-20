@@ -40,7 +40,11 @@ const DetailModal = ({ open, onClose, cardData,unmatchHandler,matchList }) =>{
 
                       <h2 className="applicant-name-holder">{cardData.fullName}</h2>
 
-                      <p className="applicant-school-holder">{cardData.major}</p>
+
+                      <p className="applicant-school-holder"><b>Major:</b> {cardData.major}</p>
+                      <p className="applicant-school-holder"><b>Portofolio:</b> {cardData.portofolioLink}</p>
+                      <p className="applicant-school-holder"><b>LinkedIn:</b> {cardData.linkedlnLink}</p>
+                      <p className="applicant-school-holder"><b>Description</b></p>
 
                       <p className="modal-content-description-container">
                           {cardData.description}

@@ -47,7 +47,7 @@ const Signup = () =>{
 
             try {
                 
-                const response = await axios.post('http://localhost:3000/api/createaccount',authenticationData)
+                const response = await axios.post('https://teamseeker-production-8e24.up.railway.app/api/createaccount',authenticationData)
                 console.log('response data:',response.data)
                 
                 navigate('/role',{

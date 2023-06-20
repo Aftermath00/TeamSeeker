@@ -14,7 +14,7 @@ const LeftSideBar = ({matchList,setMatchList,userNameData,getMatchList,renderCou
 
     const getUserDataFromAPI = async () =>{
 
-        const response = await axios(`http://localhost:3000/api/detailteam/${userNameData}`)
+        const response = await axios(`https://teamseeker-production-8e24.up.railway.app/api/detailteam/${userNameData}`)
 
         setUserDetail(response.data.dataTeamDetail[0])
 

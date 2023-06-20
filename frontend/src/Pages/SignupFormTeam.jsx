@@ -8,8 +8,6 @@ const SignupFormTeam = () =>{
     const navigate = useNavigate()
     const location = useLocation()
 
-    
-
     const userNameData = location.state?.data.username
 
     const [teamName,setTeamName] = useState("")
@@ -54,6 +52,7 @@ const SignupFormTeam = () =>{
     }
 
     const createTeamButtonHandler = async () =>{
+
         const userData = {
             "teamName":teamName,
             "projectTitle":projectTitle,
@@ -87,7 +86,7 @@ const SignupFormTeam = () =>{
                     "phoneNum":phone
                 }
                 
-                const response = await axios.post('http://localhost:3000/api/registerteam',teamData)
+                const response = await axios.post('https://teamseeker-production-8e24.up.railway.app/api/registerteam',teamData)
 
                 console.log("response message:",response.data.message)
 

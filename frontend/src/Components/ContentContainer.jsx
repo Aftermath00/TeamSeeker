@@ -26,7 +26,7 @@ const ContentContainer = ({matchList,setMatchList,userNameData}) =>{
     const getListOfCandidates = async () =>{
         try {
 
-            const response = await axios.get(`http://localhost:3000/api/home/${userNameData}`)
+            const response = await axios.get(`https://teamseeker-production-8e24.up.railway.app/api/home/${userNameData}`)
             console.log('skills applicant:',response.data.applicantBySkills)
             setListCandidate(response.data.applicantBySkills)
             setCardData(response.data.applicantBySkills[0])
@@ -49,7 +49,7 @@ const ContentContainer = ({matchList,setMatchList,userNameData}) =>{
 
             try {
 
-                const response = await axios.post('http://localhost:3000/api/matched',matchUserData)
+                const response = await axios.post('https://teamseeker-production-8e24.up.railway.app/api/matched',matchUserData)
 
                 if(response.data.message == 'Matching Successful!'){
 

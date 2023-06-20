@@ -38,7 +38,7 @@ const MainPage = () =>{
     const getApplicantDetail = async(applicantUsername) =>{
         try {
 
-            const response = await axios.get(`http://localhost:3000/api/detailapplicant/${applicantUsername}`)
+            const response = await axios.get(`https://teamseeker-production-8e24.up.railway.app/api/detailapplicant/${applicantUsername}`)
 
             return response.data.dataDetailApplicant[0]
             
@@ -56,7 +56,7 @@ const MainPage = () =>{
             "usernameTeam": userNameData,
           };
       
-          const response = await axios.post('http://localhost:3000/api/matches', requestBody);
+          const response = await axios.post('https://teamseeker-production-8e24.up.railway.app/api/matches', requestBody);
       
           const matchListResponse = response.data.userNameApplicants;
 

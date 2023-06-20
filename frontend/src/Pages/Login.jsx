@@ -34,7 +34,7 @@ export default function Login(){
 
             try {
 
-                const response = await axios.post('http://localhost:3000/api/userlogin',loginData)
+                const response = await axios.post('https://teamseeker-production-8e24.up.railway.app/api/userlogin',loginData)
                 
                 if(response.data.message == "Login Successful!"){
 

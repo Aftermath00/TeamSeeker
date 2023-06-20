@@ -142,7 +142,7 @@ const SignupForm = () =>{
 
                 console.log(userData)
 
-                const response = await axios.post('http://localhost:3000/api/registerapplicant',userData)
+                const response = await axios.post('https://teamseeker-production-8e24.up.railway.app/api/registerapplicant',userData)
 
                 console.log('response data:',response.data)
 

@@ -4,6 +4,8 @@ import axios from "axios"
 
 const MatchList = ({matchList,userNameData,setMatchList,testMatchList}) =>{
 
+    if(matchList == {} || matchList == undefined) return ('no match yet')
+
     const [isOpenUserDetailModalOpen, setIsUserDetailModalOpen] = useState(false)
 
     const [currentData,setCurrentData] = useState({})
@@ -35,7 +37,7 @@ const MatchList = ({matchList,userNameData,setMatchList,testMatchList}) =>{
         console.log('applicant username:',deleteData.usernameApplicant)
 
 
-        const response = await axios.delete('http://localhost:3000/api/delmatch',{ data: deleteData })
+        const response = await axios.delete('https://teamseeker-production-8e24.up.railway.app/api/delmatch',{ data: deleteData })
 
         if(response.data.message == "Match deleted successfully"){
 

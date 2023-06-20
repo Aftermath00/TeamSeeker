@@ -38,15 +38,17 @@ const TeamModal = ({open, onClose, userDetail}) =>{
 
                     <h2>Team Profile</h2>
 
-                      {/* <img className="applicant-image-container" src={cardData.profileImageUrl}/> */}
+                      <img className="applicant-image-container" src="https://100k-faces.glitch.me/random-image"/>
 
                       <h2 className="applicant-name-holder">{userDetail.teamName}</h2>
 
-                      <p className="applicant-school-holder">{userDetail.projectTitle}</p>
-
-                      <p className="modal-content-description-container">
-                          {userDetail.description}
-                      </p>
+                      <p className="applicant-school-holder"><b>Project Name:</b> {userDetail.projectTitle}</p>
+                      <p className="applicant-school-holder"><b>Objective:</b> {userDetail.objective}</p>
+                      <p className="applicant-school-holder"><b>We're looking for: </b> {userDetail.position}</p>
+                      <p className="applicant-school-holder"><b>Description:</b></p>
+                      <div className="description-container">
+                    {userDetail.description}
+                    </div>
 
                       <div className="skill-field">
                       <p className="expertise-title">Looking for these skills:</p>
@@ -59,7 +61,6 @@ const TeamModal = ({open, onClose, userDetail}) =>{
 
                       </div>
 
-                      <p className="location-holder">{userDetail.email}</p>
                       
                 </div>
 
