@@ -3,6 +3,8 @@ import "../styles/main-page.css"
 import Card from "./Card"
 import userData from "../../dummyData/userData"
 import axios from "axios"
+import yes_icon from '../assets/yes_icon.png'
+import no_icon from '../assets/no_icon.png'
 
 const ContentContainer = ({matchList,setMatchList,userNameData}) =>{
 
@@ -113,11 +115,11 @@ const ContentContainer = ({matchList,setMatchList,userNameData}) =>{
             <div className = "option-container">
             
                 <button onClick={notMatch}  className="no-btn">
-                    <img src = ".\src\assets\no_icon.png"/>
+                    <img src = {no_icon}/>
                 </button>
 
                 <button onClick={match} className="yes-btn">
-                    <img src = ".\src\assets\yes_icon.png"/>
+                    <img src = {yes_icon}/>
                 </button>
 
             </div>

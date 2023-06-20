@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"
 import "../styles/login.css"
 import { useState } from "react"
 import axios from "axios"
+import team_seeker_logo from '../assets/team_seeker_logo.png';
 
 const Signup = () =>{
 
@@ -78,7 +79,7 @@ const Signup = () =>{
         <>
         <div className="login-main-container">
 
-        <img src="src\assets\team_seeker_logo.png"/>
+        <img src={team_seeker_logo}/>
 
         <h1>Sign Up</h1>
         <h2>Find the Best Teammate Here</h2>

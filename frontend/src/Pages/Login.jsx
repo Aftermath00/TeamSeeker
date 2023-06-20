@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"
 import "../styles/login.css"
 import { useState } from "react"
 import axios from "axios"
+import team_seeker_logo from '../assets/team_seeker_logo.png';
 
 export default function Login(){
 
@@ -79,7 +80,7 @@ export default function Login(){
         <>
         <div className="login-main-container">
 
-        <img src=".\src\assets\team_seeker_logo.png"/>
+        <img src={team_seeker_logo}/>
 
         <h1>Welcome Back</h1>
         <h2>Have We Met Before?</h2>
