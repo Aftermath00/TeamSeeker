@@ -2,6 +2,8 @@ import { useState } from "react";
 import "../styles/signup-form.css"
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import team_seeker_logo from "../assets/team_seeker_logo.png";
+import add from "../assets/add.png";
 
 const SignupForm = () =>{
 
@@ -165,7 +167,7 @@ const SignupForm = () =>{
 
             <div className="signup-form-main-container">
 
-                <img className="small-logo" src="src\assets\team_seeker_logo.png"/>
+                <img className="small-logo" src={team_seeker_logo}/>
                 <h1>Create Account</h1>
 
                 <div className="secondary-form-container">
@@ -221,7 +223,7 @@ const SignupForm = () =>{
 
                             <div className="picture-form">
                                 <button type="file">
-                                    <img src="src\assets\add.png"/>
+                                    <img src={add}/>
                                 </button>
                             </div>
                         </div>

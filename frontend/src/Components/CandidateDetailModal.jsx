@@ -1,4 +1,4 @@
-
+import cancel_btn from '../assets/cancel_btn.png'
 const MODAL_STYLES = {
   position: 'fixed',
   top: '50%',
@@ -27,7 +27,7 @@ const CandidateDetailModal = ({ open, onClose, cardData }) =>{
             <div style={MODAL_STYLES} className='modal-style'>
                 <div className='close-btn-style'>
                       <button onClick={onClose}>
-                        <img src='.\src\assets\cancel_btn.png' />
+                        <img src={cancel_btn} />
                       </button>
                 </div>
 

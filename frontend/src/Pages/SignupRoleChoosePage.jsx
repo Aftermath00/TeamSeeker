@@ -1,7 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import "../styles/choose-role.css"
 import { useState } from "react"
-
+import team_seeker_logo from "../assets/team_seeker_logo.png";
+import individual_icon from "../assets/individual_icon.png";
+import team_icon from "../assets/team_icon.png";
 const SignupRoleChoosePage = () =>{
 
     const navigate = useNavigate()
@@ -54,7 +56,7 @@ const SignupRoleChoosePage = () =>{
 
     return(
         <>
-        <img className="small-logo" src="src/assets/team_seeker_logo.png"/>
+        <img className="small-logo" src={team_seeker_logo}/>
 
         <div className="choose-role-container">
 
@@ -63,13 +65,13 @@ const SignupRoleChoosePage = () =>{
             <div className="options-container">
                 <div onClick={handleRoleButtonClick}
                 className = {isIndividualClicked ? "applicant-container option-box option-box-clicked" : "applicant-container option-box"}>
-                    <img src="src\assets\individual_icon.png"/>
+                    <img src={individual_icon}/>
                     <label>Individual</label>
                 </div>
 
                 <div onClick={handleRoleButtonClick} 
                 className = {isTeamClicked ? "applicant-container option-box option-box-clicked" : "applicant-container option-box"}>
-                    <img src="src\assets\team_icon.png"/>
+                    <img src={team_icon}/>
                     <label>Team</label>
                 </div>
             </div>
