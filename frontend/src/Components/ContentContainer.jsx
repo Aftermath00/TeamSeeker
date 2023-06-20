@@ -113,11 +113,11 @@ const ContentContainer = ({matchList,setMatchList,userNameData}) =>{
             <div className = "option-container">
             
                 <button onClick={notMatch}  className="no-btn">
-                    <img src = "src\assets\no_icon.png"/>
+                    <img src = ".\src\assets\no_icon.png"/>
                 </button>
 
                 <button onClick={match} className="yes-btn">
-                    <img src = "src\assets\yes_icon.png"/>
+                    <img src = ".\src\assets\yes_icon.png"/>
                 </button>
 
             </div>

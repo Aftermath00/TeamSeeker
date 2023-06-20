@@ -79,7 +79,7 @@ export default function Login(){
         <>
         <div className="login-main-container">
 
-        <img src="src\assets\team_seeker_logo.png"/>
+        <img src=".\src\assets\team_seeker_logo.png"/>
 
         <h1>Welcome Back</h1>
         <h2>Have We Met Before?</h2>
