@@ -36,11 +36,11 @@ const DetailModal = ({ open, onClose, cardData,unmatchHandler,matchList }) =>{
                 </div>
 
                 <div className='modal-content-container'>
-                      <img className="applicant-image-container" src={cardData.profileImageUrl}/>
+                      <img className="applicant-image-container" src='https://100k-faces.glitch.me/random-image'/>
 
-                      <h2 className="applicant-name-holder">{cardData.name}</h2>
+                      <h2 className="applicant-name-holder">{cardData.fullName}</h2>
 
-                      <p className="applicant-school-holder">{cardData.institution}</p>
+                      <p className="applicant-school-holder">{cardData.major}</p>
 
                       <p className="modal-content-description-container">
                           {cardData.description}
@@ -51,13 +51,13 @@ const DetailModal = ({ open, onClose, cardData,unmatchHandler,matchList }) =>{
 
                       <ul className="skill-list">
                       
-                          <li className="skill-list-item">{cardData.expertise[0]}</li>
-                          <li className="skill-list-item">{cardData.expertise[1]}</li>
+                          <li className="skill-list-item">{cardData.skill[0]}</li>
 
                       </ul>
 
                       </div>
-                      <p className="location-holder">{cardData.location}</p>
+                      
+                      <p className="location-holder">{cardData.email}</p>
 
                       <button onClick={unmatchHandler}
                       className="unmatch-btn">unmatch</button>

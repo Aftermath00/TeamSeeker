@@ -83,7 +83,8 @@ const SignupFormTeam = () =>{
                     "position":position,
                     "skillReq":[skill],
                     "description":description,
-                    "email":email
+                    "email":email,
+                    "phoneNum":phone
                 }
                 
                 const response = await axios.post('http://localhost:3000/api/registerteam',teamData)

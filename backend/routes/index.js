@@ -44,7 +44,7 @@ router.get('/home/:username', applicantBySkillReq);
 router.post('/createaccount', creatingAccount);
 
 router.post('/matched', addingMatched)
-router.get('/matches', gettingMatches)
+router.post('/matches', gettingMatches)
 
 router.delete('/delmatch', deleletingMatch)
 

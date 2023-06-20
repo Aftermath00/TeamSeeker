@@ -1,11 +1,10 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "../styles/main-page.css"
 import Card from "./Card"
 import userData from "../../dummyData/userData"
 import axios from "axios"
 
 const ContentContainer = ({matchList,setMatchList,userNameData}) =>{
-
 
     const applicantNotFound = {
         "name": "No Applicant Available",
@@ -16,47 +15,71 @@ const ContentContainer = ({matchList,setMatchList,userNameData}) =>{
         "location": ""
     }
 
+    const [listCandidate,setListCandidate] = useState([])
 
     const [count,setCount] = useState(0)
 
 
-    const [cardData, setCardData] = useState(
-        userData[0]
-    )
+    const [cardData, setCardData] = useState({})
+
+
+    const getListOfCandidates = async () =>{
+        try {
+
+            const response = await axios.get(`http://localhost:3000/api/home/${userNameData}`)
+            console.log('skills applicant:',response.data.applicantBySkills)
+            setListCandidate(response.data.applicantBySkills)
+            setCardData(response.data.applicantBySkills[0])
+            
+        } catch (error) {
+            console.log('error:',error)
+        }
+
+    }
+
     const match = async() => {
         
-        if(count != userData.length-1){
+        if(count != listCandidate.length-1){
 
             const matchUserData = {
 
                 "userNameTeam":userNameData,
-                "userNameApplicants":userData[count].username
+                "userNameApplicants":listCandidate[count].userName
             }
 
-            const response = await axios.post('http://localhost:3000/api/matched',matchUserData)
+            try {
 
-            if(response.data.message == 'Matching Successful!'){
+                const response = await axios.post('http://localhost:3000/api/matched',matchUserData)
 
-                setCardData(userData[count+1]);
+                if(response.data.message == 'Matching Successful!'){
 
-                userData[count].id = crypto.randomUUID()
+
+                    setCardData(listCandidate[count+1]);
     
-                setMatchList(currentList =>{
-                    return [
-                        ...currentList,
-                        userData[count]
-                    ]
-                })
-
-                setCount(count+1);
-
-                console.log('adding match success')
-
+                    listCandidate[count].id = crypto.randomUUID()
+        
+                    setMatchList(currentList =>{
+                        return [
+                            ...currentList,
+                            listCandidate[count]
+                        ]
+                    })
+    
+                    setCount(count+1);
+    
+                    console.log('adding match success')
+    
+                }
+                
+            } catch (error) {
+                console.log('error:',error)
+                return;
             }
+
 
         }
 
-        if(count == userData.length){
+        if(count == listCandidate.length){
             
             setCardData(applicantNotFound)
         }
@@ -64,13 +87,16 @@ const ContentContainer = ({matchList,setMatchList,userNameData}) =>{
     };
 
     const notMatch = () =>{
-        if(count < userData.length-1){
-            setCardData(userData[count+1]);
+        if(count < listCandidate.length-1){
+            setCardData(listCandidate[count+1]);
             setCount(count+1);
         }
-
-        
     }
+
+    useEffect(() => {
+      getListOfCandidates()
+    }, [])
+    
 
     return(
         <>

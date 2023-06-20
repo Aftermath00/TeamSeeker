@@ -5,15 +5,16 @@ const Card = ({cardData}) =>{
 
     const [isOpen, setIsOpen] = useState(false)
 
+
     return(
         <>
 
             <div className="card-container">
-                <img className="applicant-image-container" src={cardData.profileImageUrl}/>
+                <img className="applicant-image-container" src="https://100k-faces.glitch.me/random-image"/>
 
-                <h2 className="applicant-name-holder">{cardData.name}</h2>
+                <h2 className="applicant-name-holder">{cardData.fullName}</h2>
 
-                <p className="applicant-school-holder">{cardData.institution}</p>
+                <p className="applicant-school-holder">{cardData.major}</p>
 
                 <p className="description-container">
                     {cardData.description}
@@ -23,13 +24,11 @@ const Card = ({cardData}) =>{
                 <p className="expertise-title">Expertise:</p>
 
                 <ul className="skill-list">
-                    <li className="skill-list-item">{cardData.expertise[0]}</li>
-                    <li className="skill-list-item">{cardData.expertise[1]}</li>
-                
+                   {/*  <li className="skill-list-item">{cardData.skill[0]}</li> */}
                 </ul>
 
                 </div>
-                <p className="location-holder">{cardData.location}</p>
+                <p className="location-holder">{cardData.email}</p>
 
                 <a onClick={() => setIsOpen(true)} className="detail-link">Details</a>
 

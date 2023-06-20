@@ -4,12 +4,13 @@ import MatchList from "./MatchList"
 import { useEffect, useState } from "react"
 import TeamModal from "./TeamModal"
 
-const LeftSideBar = ({matchList,setMatchList,userNameData}) =>{
+const LeftSideBar = ({matchList,setMatchList,userNameData,getMatchList,renderCount}) =>{
 
 
     const [userDetail,setUserDetail] = useState({})
 
     const [isUserDetailModalOpen,setIsUserDetailModalOpen] = useState(false)
+
 
     const getUserDataFromAPI = async () =>{
 
@@ -17,18 +18,16 @@ const LeftSideBar = ({matchList,setMatchList,userNameData}) =>{
 
         setUserDetail(response.data.dataTeamDetail[0])
 
-        console.log('mantap jiwa 1',response.data.dataTeamDetail[0])
-
-        console.log("mantap jiwa",userDetail)
+        console.log('new match list',matchList[0])
 
     }
 
-    
-
+      
     useEffect(() => {
-
-        getUserDataFromAPI()
-        
+          
+            getUserDataFromAPI();
+            getMatchList();
+    
     }, []);
 
     return(
@@ -37,14 +36,14 @@ const LeftSideBar = ({matchList,setMatchList,userNameData}) =>{
         <div className="left-side-bar">
 
         
-        {/* <TeamModal
+        <TeamModal
             userDetail={userDetail}
             open={isUserDetailModalOpen}
-            onClose={() => setIsUserDetailModalOpen(false)}/> */}
+            onClose={() => setIsUserDetailModalOpen(false)}/>
         
         <div className="current-user-profile-viewer">
 
-            <img onClick={()=>setIsUserDetailModalOpen(true)} className="profile-image-holder" src="src\assets\EZPark.png"/>
+            <img onClick={()=>setIsUserDetailModalOpen(true)} className="profile-image-holder" src="https://100k-faces.glitch.me/random-image"/>
             
             <div className="name-info-container">
                 <p className="name-holder">{userDetail.teamName }</p>
@@ -54,12 +53,10 @@ const LeftSideBar = ({matchList,setMatchList,userNameData}) =>{
 
         <h2 style={{ color: 'white' }}>Matches</h2>
 
-        <MatchList 
+        <MatchList
         setMatchList = {setMatchList}
         userNameData = {userNameData} 
         matchList = {matchList}/>
-
-
         
         </div>
         </>

@@ -17,7 +17,7 @@ const MODAL_STYLES = {
   }
 
 
-const TeamModal = (open, onClose, userDetail) =>{
+const TeamModal = ({open, onClose, userDetail}) =>{
 
 
     if (!open) return null
@@ -35,6 +35,8 @@ const TeamModal = (open, onClose, userDetail) =>{
                 </div>
 
                 <div className='modal-content-container'>
+
+                    <h2>Team Profile</h2>
 
                       {/* <img className="applicant-image-container" src={cardData.profileImageUrl}/> */}
 

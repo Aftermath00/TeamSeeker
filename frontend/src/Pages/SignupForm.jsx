@@ -121,11 +121,13 @@ const SignupForm = () =>{
             "userName":userNameData.username,
             "fullName":fullName,
             "major":major,
-            "semester":3,
+            "year":parseInt(year),
             "expertise":expertise,
             "skill":[skill],
             "description":description,
             "portofolioLink":portofolioLink,
+            "linkedlnLink":linkedInLink,
+            "phoneNum":phone,
             "email":email
         };
 
