@@ -11,7 +11,5 @@ Team Seeker is a web application designed to promote and connect individuals wit
 **Server:** NodeJS, ExpressJS, MongoDB
 
 ## Webpage
-![image](https://github.com/Aftermath00/TeamSeeker/assets/86555486/b0a40146-28ab-428a-a739-0d3a4197a757)
-
 ![image](https://github.com/Aftermath00/TeamSeeker/assets/86555486/8352e352-67d0-4892-844a-4d4f4cd04b1d)
 
