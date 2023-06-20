@@ -8,7 +8,8 @@ Team Seeker is a web application designed to promote and connect individuals wit
 
 **Client:** React 
 
-**Server:** Node, MongoDB
+**Server:** NodeJS, ExpressJS, MongoDB
 
-## Features
+## Webpage
+![image](https://github.com/Aftermath00/TeamSeeker/assets/86555486/8352e352-67d0-4892-844a-4d4f4cd04b1d)
 
